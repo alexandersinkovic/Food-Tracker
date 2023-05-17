@@ -57,7 +57,7 @@ class _FoodTrackerHomePageState extends State<FoodTrackerHomePage> {
 
 class FoodTrackerState extends ChangeNotifier {
   var current = WordPair.random();
-  var displayedFood = ['Food1', 'Food2', 'Food3'];
+  var displayedFood = ['Food1', 'Food2', 'Food3', 'Food4', 'Food5'];
   var description =
       'Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing Elite Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua Ut Enim Ad Minim Veniam Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu Fugiat Nulla Pariatur Excepteur Sint Occaecat Cupidatat Non Proident Sunt In Culpa Qui Officia Deserunt Mollit Anim Id Est Laborum Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing Elite Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua Ut Enim Ad Minim Veniam Quis';
   Widget selectedFood = Placeholder();
@@ -74,25 +74,36 @@ class FoodTrackerPage extends StatelessWidget {
     var appState = context.watch<FoodTrackerState>();
 
     return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: Text('Food Tracker'),
-        ),
-        body: Scrollbar(
-            child: ListView(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          children: [
-            for (var food in appState.displayedFood)
-              Padding(
-                padding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
-                child: FoodEntry(
-                  food: food,
-                  rating: 5,
-                  description: appState.description,
-                ),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Text('Food Tracker'),
+      ),
+      body: Scrollbar(
+          child: ListView(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        children: [
+          for (var food in appState.displayedFood)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
+              child: FoodEntry(
+                food: food,
+                rating: 5,
+                description: appState.description,
               ),
-          ],
-        )));
+            ),
+        ],
+      )),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => InsertFood(),
+          ));
+        },
+        shape: CircleBorder(),
+        backgroundColor: Color.fromARGB(255, 25, 216, 254),
+        child: Icon(Icons.add),
+      ),
+    );
   }
 }
 
@@ -297,6 +308,84 @@ class FoodDetails extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class InsertFood extends StatelessWidget {
+  const InsertFood({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Neuer Eintrag',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 25,
+          ),
+        ),
+      ),
+      backgroundColor: Colors.lightGreenAccent[100],
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Name',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Name',
+                  fillColor: Colors.white,
+                  filled: true,
+                  contentPadding: EdgeInsets.all(8.0),
+                ),
+              ),
+              Text(
+                'Bewertung',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: '0.00 - 5.00',
+                  fillColor: Colors.white,
+                  filled: true,
+                  contentPadding: EdgeInsets.all(8.0),
+                ),
+              ),
+              Text(
+                'Beschreibung',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Beschreibung',
+                  fillColor: Colors.white,
+                  filled: true,
+                  contentPadding: EdgeInsets.all(8.0),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
