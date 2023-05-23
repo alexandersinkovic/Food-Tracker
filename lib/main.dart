@@ -40,24 +40,27 @@ class FoodTrackerPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xff16213e),
         automaticallyImplyLeading: false,
-        title: Text('Food Tracker'),
+        title: Text('Food Tracker', style: TextStyle(color: Colors.white)),
       ),
+      backgroundColor: Color(0xff16213e),
       body: Scrollbar(
-          child: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        children: [
-          for (var food in appState.displayedFood)
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
-              child: FoodEntry(
-                food: food,
-                rating: 5,
-                description: appState.description,
+        child: ListView(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          children: [
+            for (var food in appState.displayedFood)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
+                child: FoodEntry(
+                  food: food,
+                  rating: 5,
+                  description: appState.description,
+                ),
               ),
-            ),
-        ],
-      )),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
@@ -87,12 +90,13 @@ class FoodEntry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Colors.transparent,
       child: Ink(
         height: 120,
         padding: EdgeInsets.fromLTRB(4.0, 4.0, 4.0, 4.0),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          color: Colors.lightGreenAccent[100],
+          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+          color: Colors.indigo[600],
         ),
         child: InkWell(
           onTap: () {
@@ -117,7 +121,11 @@ class FoodEntry extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: Row(
                           children: [
-                            Expanded(child: Text(textScaleFactor: 1.2, food)),
+                            Expanded(
+                                child: Text(
+                                    textScaleFactor: 1.2,
+                                    style: TextStyle(color: Colors.white),
+                                    food)),
                             FoodRating(rating: rating),
                           ],
                         ),
@@ -134,6 +142,7 @@ class FoodEntry extends StatelessWidget {
                                   Expanded(
                                     child: Text(
                                       description,
+                                      style: TextStyle(color: Colors.white),
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 3,
                                       softWrap: true,

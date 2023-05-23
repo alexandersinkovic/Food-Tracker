@@ -62,7 +62,7 @@ class _InsertFoodState extends State<InsertFood> {
   }
 
   void presentLoader(BuildContext context,
-      {String text = 'Aguarde...',
+      {String text = 'Loading...',
       bool barrierDismissible = false,
       bool willPop = true}) {
     showDialog(
@@ -95,78 +95,113 @@ class _InsertFoodState extends State<InsertFood> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.indigo[600],
         title: Text(
           'Neuer Eintrag',
           style: TextStyle(
+            color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 25,
           ),
         ),
       ),
-      backgroundColor: Colors.lightGreenAccent[100],
+      backgroundColor: Color(0xff16213e),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(
+                height: 15.0,
+              ),
               Text(
                 'Name',
                 style: TextStyle(
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 15,
                 ),
               ),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Name',
-                  fillColor: Colors.white,
-                  filled: true,
-                  contentPadding: EdgeInsets.all(8.0),
+              Material(
+                elevation: 3.0,
+                color: Colors.transparent,
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                        borderSide: BorderSide.none),
+                    hintText: 'Name',
+                    fillColor: Color(0xffeef0e1),
+                    filled: true,
+                    contentPadding: EdgeInsets.all(8.0),
+                  ),
                 ),
+              ),
+              SizedBox(
+                height: 15.0,
               ),
               Text(
                 'Bewertung',
                 style: TextStyle(
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 15,
                 ),
               ),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: '0.00 - 5.00',
-                  fillColor: Colors.white,
-                  filled: true,
-                  contentPadding: EdgeInsets.all(8.0),
+              Material(
+                elevation: 3.0,
+                borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                        borderSide: BorderSide.none),
+                    hintText: '0.00 - 5.00',
+                    fillColor: Color(0xffeef0e1),
+                    filled: true,
+                    contentPadding: EdgeInsets.all(8.0),
+                  ),
                 ),
+              ),
+              SizedBox(
+                height: 15.0,
               ),
               Text(
                 'Beschreibung',
                 style: TextStyle(
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 15,
                 ),
               ),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Beschreibung',
-                  fillColor: Colors.white,
-                  filled: true,
-                  contentPadding: EdgeInsets.all(8.0),
+              Material(
+                elevation: 3.0,
+                borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                        borderSide: BorderSide.none),
+                    hintText: 'Beschreibung',
+                    fillColor: Color(0xffeef0e1),
+                    filled: true,
+                    contentPadding: EdgeInsets.all(8.0),
+                  ),
                 ),
+              ),
+              SizedBox(
+                height: 15.0,
               ),
               Text(
                 'Bild hochladen',
                 style: TextStyle(
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 15,
                 ),
               ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 0.0),
+              SizedBox(
                 height: 200,
                 child: _image == ''
                     ? CardPicture(
@@ -190,22 +225,22 @@ class _InsertFoodState extends State<InsertFood> {
                       ),
               ),
               SizedBox(
-                height: 20.0,
+                height: 15.0,
               ),
               Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: EdgeInsets.only(top: 10.0),
                   child: Row(
                     children: [
                       Expanded(
                         child: Container(
                             decoration: BoxDecoration(
-                                // color: Colors.indigo,
-                                gradient: LinearGradient(colors: [
+                                color: Colors.indigo[600],
+                                /*gradient: LinearGradient(colors: [
                                   Colors.indigo,
                                   Colors.indigo.shade800
-                                ]),
+                                ]),*/
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(3.0))),
+                                    BorderRadius.all(Radius.circular(4.0))),
                             child: RawMaterialButton(
                               padding: EdgeInsets.symmetric(vertical: 12.0),
                               onPressed: () async {

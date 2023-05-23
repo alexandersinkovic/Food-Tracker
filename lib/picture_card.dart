@@ -51,11 +51,15 @@ class CardPicture extends StatelessWidget {
 
     return Card(
         elevation: 3,
+        margin: EdgeInsets.all(0.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4.0),
+        ),
         child: InkWell(
           onTap: onTap,
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 18, horizontal: 25),
-            width: size.width * .70,
+            width: size.width,
             height: 100,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -67,7 +71,7 @@ class CardPicture extends StatelessWidget {
                 ),
                 Icon(
                   Icons.photo_camera,
-                  color: Colors.indigo[400],
+                  color: Colors.indigo[600],
                 )
               ],
             ),

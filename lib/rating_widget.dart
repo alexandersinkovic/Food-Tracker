@@ -43,7 +43,7 @@ class _FoodRatingState extends State<FoodRating> {
         Center(
           child: Text(
             _rating.toStringAsFixed(2),
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
           ),
         ),
       ],
