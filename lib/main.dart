@@ -1,4 +1,3 @@
-import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'rating_widget.dart';
@@ -22,52 +21,16 @@ class FoodTracker extends StatelessWidget {
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
         ),
-        home: FoodTrackerHomePage(),
+        home: FoodTrackerPage(),
       ),
     );
   }
 }
 
-class FoodTrackerHomePage extends StatefulWidget {
-  const FoodTrackerHomePage({Key? key}) : super(key: key);
-
-  @override
-  State<FoodTrackerHomePage> createState() => _FoodTrackerHomePageState();
-}
-
-class _FoodTrackerHomePageState extends State<FoodTrackerHomePage> {
-  var selectedIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    Widget selectedFood = context.watch<FoodTrackerState>().selectedFood;
-    Widget page;
-    switch (selectedIndex) {
-      case 0:
-        page = FoodTrackerPage();
-        break;
-      case 1:
-        page = selectedFood;
-        break;
-      default:
-        throw Exception('Invalid index $selectedIndex');
-    }
-
-    return page;
-  }
-}
-
 class FoodTrackerState extends ChangeNotifier {
-  var current = WordPair.random();
   var displayedFood = ['Food1', 'Food2', 'Food3', 'Food4', 'Food5'];
   var description =
       'Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing Elite Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua Ut Enim Ad Minim Veniam Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu Fugiat Nulla Pariatur Excepteur Sint Occaecat Cupidatat Non Proident Sunt In Culpa Qui Officia Deserunt Mollit Anim Id Est Laborum Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing Elite Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua Ut Enim Ad Minim Veniam Quis';
-  Widget selectedFood = Placeholder();
-
-  void setSelectedFood(Widget food) {
-    selectedFood = food;
-    notifyListeners();
-  }
 }
 
 class FoodTrackerPage extends StatelessWidget {
